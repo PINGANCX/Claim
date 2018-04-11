@@ -1,4 +1,4 @@
-import xlrd
+
 #from datetime import date,datetime
 class accident():
         def _init_(self,year=0,hour=0,minute=0,x=0.0,y=0.0):
@@ -23,7 +23,8 @@ class accident():
 
 
 def read_excel():
-    ExcelFile = xlrd.open_workbook(r'C:/Users/PEP/Desktop/平安保险/test.xlsx')
+    import xlrd
+    ExcelFile = xlrd.open_workbook(r'data/input.xlsx')
     print (ExcelFile.sheet_names())
     """告诉你这个文件已经成功读入了"""
 
@@ -44,7 +45,6 @@ def read_excel():
 
     return row
 
-def write_excel():
 
 
 
