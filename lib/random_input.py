@@ -1,12 +1,12 @@
 import random
 def random_x():
-    return  random.random()*100%100 + 0.01* random.random()%100
+    return random.random()*100%100 + 0.01* random.random()%100
 
 def random_y():
-    return  random.random()*100%100 + 0.01* random.random()%100
+    return random.random()*100%100 + 0.01* random.random()%100
 
 def random_hour():
-     return  random.random()*100% 24
+    return  random.random()*100% 24
 
 def random_minute():
     return random.random() *100 % 60
