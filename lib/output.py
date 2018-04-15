@@ -1,27 +1,33 @@
-def output(accident,index):
+from lib.accident import *
+def output():
     import xlwt
     excel = xlwt.Workbook()
-    sheet = excel.add_sheet("sheet1",cell_overwrite_ok=True)
+    sheet = excel.add_sheet("Sheet1",cell_overwrite_ok=True)
     #新增一个sheet
 
-    sheet.write(1,1,"year")
-    sheet.write(1,2,"hours")
-    sheet.write(1,3,"minutes")
-    sheet.write(1,4,"x")
-    sheet.write(1,5,"y")
+    sheet.write(0, 0, "date")
+    sheet.write(0, 1, "time")
+    sheet.write(0, 2, "x")
+    sheet.write(0, 3, "y")
 
-    i=0
+    excel.save(r"data/input.xls")
+
+    return excel, sheet
+
+def write(accident_list, begin, end, excel, sheet):
+    i = 0
+    line=begin
     while(1):
-        if(i!=index):
-            sheet.write(i+2,1,accident[i][0])
-            sheet.write(i+2,2,accident[i][1])
-            sheet.write(i+2,3,accident[i][2])
-            sheet.write(i+2,4,accident[i][3])
-            sheet.write(i+2,5,accident[i][4])
+        if(line!=end):
+            sheet.write(line+1,0,str(accident_list[i].year)+'-'+str(accident_list[i].month)+'-'+str(accident_list[i].day))
+            sheet.write(line+1,1,str(accident_list[i].hour)+':'+str(accident_list[i].minute)+':'+str(accident_list[i].second))
+            sheet.write(line+1,2,accident_list[i].accident_x)
+            sheet.write(line+1,3,accident_list[i].accident_y)
             i+=1
+            line+=1
         else:
             break
 
-    excel.save(r"data/output.xls")
+    excel.save(r"data/input.xls")
 
 

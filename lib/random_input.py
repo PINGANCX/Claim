@@ -1,21 +1,13 @@
+from lib.accident import *
 import random
-def random_x():
-    return random.random()*100%100 + 0.01* random.random()%100
 
-def random_y():
-    return random.random()*100%100 + 0.01* random.random()%100
-
-def random_hour():
-    return  random.random()*100% 24
-
-def random_minute():
-    return random.random() *100 % 60
-
-def random_accident():
-    accident=[]
-    accident.append(2018)
-    accident.append(random_hour())
-    accident.append(random_minute())
-    accident.append(random_x())
-    accident.append(random_y())
-    return accident
+def random_build(year = 2018, month = 4, day = 15, hour = 0, loop = 2):
+    rand_accident_list = []
+    for i in range(loop):
+        minute = random.randint(60/loop * i, 60/loop * (i+1))
+        second = random.randint(0, 60)
+        x = random.randint(0, 100)
+        y = random.randint(0, 100)
+        temp_accident = Accident(year, month, day, hour, minute, second, x, y)
+        rand_accident_list.append(temp_accident)
+    return rand_accident_list
